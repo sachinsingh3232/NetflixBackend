@@ -22,15 +22,6 @@ const register = async (req, res) => {
 }
 const login = async (req, res) => {
     try {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        res.setHeader('Access-Control-Allow-Credentials', true);
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
-        if (req.method === 'OPTIONS') {
-            return res.status(200).json(({
-                body: "OK"
-            }))
-        }
         const existingUser = await User.findOne({ email: req.body.email });
         if (!existingUser) {
             res.json({ message: "user doesn't exist" });
