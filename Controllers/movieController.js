@@ -111,17 +111,21 @@ const getAllMoviesSeries = async (req, res) => {
 }
 const searchMoviesSeries = async (req, res) => {
     try {
-        const searchQuerySearch=req.body.searchQuerySearch;
-        const series = await Movie.find();
+        const searchQuerySearch = req.body.searchQuerySearch;
+        let series = await Movie.find();
+
         if (!series.length) {
-            res.json({ message: "No MoviesSeries" })
-            return
+            res.json({ message: "No MoviesSeries" });
+            return;
         }
-        series=series.filter((s)=>return s.title.toUpperCase().includes(searchQuery.toUpperCase()));
-        res.json({ data: series })
+
+        const MoviesSeries = series.filter((s) => s.title.toUpperCase().includes(searchQuerySearch.toUpperCase()));
+        res.json({ data: MoviesSeries });
     } catch (e) {
-        console.log(e)
+        console.error(e);
+        res.status(500).json({ message: "Internal Server Error" });
     }
-}
+};
+
 
 module.exports = { createMovie, updateMovie, deleteMovie, getMovieDetails, random, getAllMovies, getAllSeries, getAllMoviesSeries,searchMoviesSeries }
