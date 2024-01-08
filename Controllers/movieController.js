@@ -119,7 +119,9 @@ const searchMoviesSeries = async (req, res) => {
             return;
         }
 
-        const MoviesSeries = series.filter((s) => return s.title.toUpperCase().includes(searchQuerySearch.toUpperCase()));
+        const MoviesSeries = series.filter(function(s){
+            return s.title.toUpperCase().includes(searchQuerySearch.toUpperCase());}
+        );
         res.json({ data: MoviesSeries });
     } catch (e) {
         console.error(e);
