@@ -125,7 +125,7 @@ const searchMoviesSeries = async (req, res) => {
         res.json({ data: MoviesSeries });
     } catch (e) {
         console.error(e);
-        res.json({ message: "Internal Server Error" });
+        res.json({ message: e });
     }
 };
 
