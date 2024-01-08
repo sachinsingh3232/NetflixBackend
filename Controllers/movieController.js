@@ -124,4 +124,4 @@ const searchMoviesSeries = async (req, res) => {
     }
 }
 
-module.exports = { createMovie, updateMovie, deleteMovie, getMovieDetails, random, getAllMovies, getAllSeries, getAllMoviesSeries }
+module.exports = { createMovie, updateMovie, deleteMovie, getMovieDetails, random, getAllMovies, getAllSeries, getAllMoviesSeries,searchMoviesSeries }
