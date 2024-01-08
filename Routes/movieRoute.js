@@ -10,6 +10,6 @@ router.route("/random").get(isUserAuthenticated, random);
 router.route("/getAllMovies").get(isUserAuthenticated, getAllMovies);
 router.route("/getAllSeries").get(isUserAuthenticated, getAllSeries);
 router.route("/getAllMoviesSeries").get(isUserAuthenticated, getAllMoviesSeries);
-router.route("/searchMoviesSeries").get(isUserAuthenticated, searchMoviesSeries);
+router.route("/searchMoviesSeries").post(isUserAuthenticated, searchMoviesSeries);
 
 module.exports = router;
