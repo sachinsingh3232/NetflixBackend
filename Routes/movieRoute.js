@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createMovie, updateMovie, deleteMovie, getMovieDetails, random, getAllMovies, getAllSeries, getAllMoviesSeries } = require('../Controllers/movieController')
+const { createMovie, updateMovie, deleteMovie, getMovieDetails, random, getAllMovies, getAllSeries, getAllMoviesSeries,searchMoviesSeries } = require('../Controllers/movieController')
 const { isUserAuthenticated, isAdmin } = require('../Middleware/auth')
 
 router.route("/createMovie").post(isUserAuthenticated, isAdmin, createMovie);
@@ -10,5 +10,6 @@ router.route("/random").get(isUserAuthenticated, random);
 router.route("/getAllMovies").get(isUserAuthenticated, getAllMovies);
 router.route("/getAllSeries").get(isUserAuthenticated, getAllSeries);
 router.route("/getAllMoviesSeries").get(isUserAuthenticated, getAllMoviesSeries);
+router.route("/searchMoviesSeries").get(isUserAuthenticated, searchMoviesSeries);
 
 module.exports = router;
