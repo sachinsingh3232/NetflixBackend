@@ -109,5 +109,19 @@ const getAllMoviesSeries = async (req, res) => {
         console.log(e)
     }
 }
+const searchMoviesSeries = async (req, res) => {
+    try {
+        const searchQuerySearch=req.body.searchQuerySearch;
+        const series = await Movie.find();
+        if (!series.length) {
+            res.json({ message: "No MoviesSeries" })
+            return
+        }
+        series=series.filter((s)=>return s.title.toUpperCase().includes(searchQuery.toUpperCase()));
+        res.json({ data: series })
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 module.exports = { createMovie, updateMovie, deleteMovie, getMovieDetails, random, getAllMovies, getAllSeries, getAllMoviesSeries }
