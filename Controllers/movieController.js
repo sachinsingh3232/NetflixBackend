@@ -119,11 +119,11 @@ const searchMoviesSeries = async (req, res) => {
             return;
         }
 
-        const MoviesSeries = series;
+        const MoviesSeries = series.data.filter(item => item.title.includes(searchQuerySearch));
         res.json({ data: MoviesSeries });
     } catch (e) {
         console.error(e);
-        res.json({ message: e });
+        res.status(500).json({ message: "Internal server Error" });
     }
 };
 
